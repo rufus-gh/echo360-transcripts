@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from typing import Sequence
 
@@ -33,6 +34,8 @@ def main(argv: Sequence[str] | None = None) -> None:
     args = build_parser().parse_args(argv)
     if args.firefox and args.stealth:
         build_parser().error("--firefox and --stealth cannot be used together")
+
+    os.makedirs(args.output, exist_ok=True)
 
     # Reuse the upstream project's authentication, course discovery and
     # transcript/VTT handling. Force transcript-only Cloud mode so no videos
