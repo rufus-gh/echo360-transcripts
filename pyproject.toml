@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "echo360-transcripts"
+version = "0.1.0"
+description = "Download all available transcripts from an Echo360 Cloud course"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Rufus" }]
+dependencies = [
+  "echo360 @ git+https://github.com/soraxas/echo360.git@master",
+]
+
+[project.scripts]
+echo360-transcripts = "echo360_transcripts.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
